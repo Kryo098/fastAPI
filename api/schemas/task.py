@@ -6,12 +6,15 @@ from pydantic import BaseModel, Field
 class TaskBase(BaseModel):
     title: Optional[str] = Field(None, example="洗濯物を取り込む")
 
+    class Config:
+        orm_mode = True
+
 
 class TaskCreate(TaskBase):
     pass
 
 
-class TaskCreateResPonse(TaskCreate):
+class TaskCreateResponse(TaskCreate):
     id: int
 
     class Config:
