@@ -17,11 +17,11 @@ async def create_task(task_body: task_schema.TaskCreate):
     return task_schema.TaskCreateResPonse(id=1, **task_body.dict())
 
 
-@router.put("/tasks")
-async def update_task():
-    pass
+@router.put("/tasks/{task_id}", response_model=task_schema.TaskCreateResPonse)
+async def update_task(task_id: int, task_body: task_schema.TaskCreate):
+    return task_schema.TaskCreateResPonse(id=task_id, **task_body.dict())
 
 
-@router.delete("/tasks")
-async def delete_task():
-    pass
+@router.delete("/tasks/{task_id}", response_model=None)
+async def delete_task(task_id: int):
+    return
